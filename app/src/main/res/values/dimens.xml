@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="textSizeForSettings">24sp</dimen>
+    <dimen name="tooltips">12sp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="textSizeForStatistics">20sp</dimen>
+    <dimen name="weightForStatistics">10</dimen>
+
+</resources>
