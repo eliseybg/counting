@@ -59,15 +59,6 @@ public class Statistics extends AppCompatActivity {
             result_FC.setText(resultFC.substring(0, resultFC.length() - 1));
         } else showSpecialTextFC();
 
-//        if(numberFC.length() <= 21){
-//            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-//            findViewById(R.id.main).setLayoutParams(layoutParams);
-//        }
-//        else {
-//            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-//            findViewById(R.id.main).setLayoutParams(layoutParams);
-//        }
-
         String numberSS = "", timeSS = "", simileSS = "", rangeSS = "", levelSS = "";
         Cursor dataSS = dbHelperSS.getData();
         int counterSS = 1;

@@ -30,8 +30,8 @@ public class MainActivity extends AppCompatActivity {
     private Button start, settings, statistics;
     private static final String PREFS_FILE = "Settings";
     SaveAndLoadSettings saveAndLoadSettings;
-    ImageButton btnStars, btnFood, btnInstagram;
-    Tooltip tooltipStars, tooltipFood, tooltipInstagram;
+    ImageButton btnStars, btnInstagram;
+    Tooltip tooltipStars, tooltipInstagram;
     ConstraintLayout constraintLayout;
     private boolean tooltipsChecking = false;
     AlertDialog alertAnswer;
@@ -112,7 +112,6 @@ public class MainActivity extends AppCompatActivity {
     public void toolTip() {
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             tooltipStars = new Tooltip.Builder(btnStars).setText(getString(R.string.rate_us)).setGravity(Gravity.TOP).setBackgroundColor(Color.parseColor("#ffffff")).setTextSize(R.dimen.tooltips).show();
-//        tooltipFood = new Tooltip.Builder(btnFood).setText("Support us").setGravity(Gravity.TOP).setBackgroundColor(Color.parseColor("#ffffff")).setTextSize(R.dimen.tooltips).show();
             tooltipInstagram = new Tooltip.Builder(btnInstagram).setText(getString(R.string.subscribe_us)).setGravity(Gravity.TOP).setBackgroundColor(Color.parseColor("#ffffff")).setTextSize(R.dimen.tooltips).show();
         }
     }
@@ -122,7 +121,6 @@ public class MainActivity extends AppCompatActivity {
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             try {
                 tooltipStars.dismiss();
-//            tooltipFood.dismiss();
                 tooltipInstagram.dismiss();
             } catch (Exception e) {
                 System.out.println(e + "!");
@@ -150,12 +148,11 @@ public class MainActivity extends AppCompatActivity {
             toolTipOff();
         if (saveAndLoadSettings.getBoolean("buttons in menu"))
             animation();
-            recreate();
+        recreate();
     }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        System.out.println("onKeyDown");
         toolTipOff();
         return false;
     }
@@ -181,7 +178,6 @@ public class MainActivity extends AppCompatActivity {
         settings = (Button) findViewById(R.id.settings);
         statistics = (Button) findViewById(R.id.statistics);
         btnStars = (ImageButton) findViewById(R.id.stars);
-//        btnFood = (ImageButton) findViewById(R.id.food);
         btnInstagram = (ImageButton) findViewById(R.id.instagram);
         start.setOnClickListener(
                 new View.OnClickListener() {
@@ -223,17 +219,6 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
         );
-//        btnFood.setOnClickListener(
-//                new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//                        toolTipOff();
-//                        Intent intent = new Intent(".FeedProgrammer");
-//                        startActivity(intent);
-//                    }
-//                }
-//        );
-
         btnInstagram.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
@@ -249,10 +234,8 @@ public class MainActivity extends AppCompatActivity {
     // отображение кнопок, если позволяют настройки
     public void setInvisible() {
         final ImageButton btnStars = (ImageButton) findViewById(R.id.stars);
-//        final ImageButton btnFood = (ImageButton) findViewById(R.id.food);
         final ImageButton btnInstagram = (ImageButton) findViewById(R.id.instagram);
         btnStars.setVisibility(View.GONE);
-//        btnFood.setVisibility(View.GONE);
         btnInstagram.setVisibility(View.GONE);
     }
 
@@ -261,15 +244,12 @@ public class MainActivity extends AppCompatActivity {
         final Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.alpha);
         final Animation animTranslate = AnimationUtils.loadAnimation(this, R.anim.scale);
         btnStars = (ImageButton) findViewById(R.id.stars);
-//        btnFood = (ImageButton) findViewById(R.id.food);
         btnInstagram = (ImageButton) findViewById(R.id.instagram);
         btnStars.setVisibility(View.VISIBLE);
-//        btnFood.setVisibility(View.VISIBLE);
         btnInstagram.setVisibility(View.VISIBLE);
         btnStars.startAnimation(animAlpha);
-//        btnFood.startAnimation(animAlpha);
         btnInstagram.startAnimation(animAlpha);
-        CountDownTimer timer = new CountDownTimer(1000, 1000) {
+        new CountDownTimer(1000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
 
@@ -278,13 +258,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFinish() {
                 btnStars.startAnimation(animTranslate);
-//                btnFood.startAnimation(animTranslate);
                 btnInstagram.startAnimation(animTranslate);
                 tooltipsChecking = true;
-                CountDownTimer timer = new CountDownTimer(1000, 1000) {
+                new CountDownTimer(1000, 1000) {
                     @Override
                     public void onTick(long millisUntilFinished) {
-
                     }
 
                     @Override

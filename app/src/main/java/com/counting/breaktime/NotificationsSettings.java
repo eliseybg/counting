@@ -32,7 +32,6 @@ public class NotificationsSettings extends MainActivity {
             c.add(Calendar.DATE, 1);
         }
 
-//        alarmManager.setExact(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), pendingIntent);
         alarmManager.setRepeating(AlarmManager.RTC,c.getTimeInMillis(),86400000, pendingIntent);
     }
 

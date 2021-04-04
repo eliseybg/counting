@@ -1,13 +1,10 @@
 package com.counting.breaktime;
 
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
-
-import java.util.Calendar;
 
 public class SaveAndLoadSettings extends AppCompatActivity {
     private static final String PREF_FIRST_OPEN = "first open";
@@ -62,29 +59,6 @@ public class SaveAndLoadSettings extends AppCompatActivity {
         // сохраняем его в настройках
         SharedPreferences.Editor prefEditor = settings.edit();
         prefEditor.putInt(placeToSave, temp);
-        prefEditor.apply();
-    }
-
-    public void save( String language) {
-        String placeToSave = PREF_LANGUAGE;
-        int position;
-
-        switch (language) {
-            case "русский":
-                position = 0;
-                break;
-            case "English":
-                position = 1;
-                break;
-            default:
-                throw new IllegalStateException("Unexpected value: " + language);
-        }
-
-        System.out.println(position + "   " + language);
-        // получаем введенное имя
-        // сохраняем его в настройках
-        SharedPreferences.Editor prefEditor = settings.edit();
-        prefEditor.putInt(placeToSave, position);
         prefEditor.apply();
     }
 
@@ -189,11 +163,6 @@ public class SaveAndLoadSettings extends AppCompatActivity {
         return settings.getInt(whatToLockFor, 1);
     }
 
-    public String getLanguage() {
-        String whatToLockFor = PREF_LANGUAGE;
-        return settings.getString(whatToLockFor, "English");
-    }
-
     public int getData(String name){
         String whatToLockFor = "";
         switch (name) {
@@ -211,9 +180,5 @@ public class SaveAndLoadSettings extends AppCompatActivity {
         SharedPreferences.Editor prefEditor = settings.edit();
         prefEditor.putBoolean("language saved", true);
         prefEditor.apply();
-    }
-
-    public boolean wasLanguageSaved(){
-        return settings.getBoolean("language saved", false);
     }
 }

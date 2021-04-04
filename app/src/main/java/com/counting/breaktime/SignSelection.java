@@ -47,7 +47,6 @@ public class SignSelection extends AppCompatActivity {
         addListenerOnButton();
         saveAndLoadSettings = new SaveAndLoadSettings(getSharedPreferences(PREFS_FILE, MODE_PRIVATE));
         getSettingsForNumbers();
-//        startFunction();
         dbHelperSS = new DBHelperSS(this);
     }
 
@@ -124,7 +123,6 @@ public class SignSelection extends AppCompatActivity {
 
     //запуск уравнений
     private void start() {
-//        restart.setImageDrawable(getDrawable(R.drawable.ic_media_play));
         restart.setVisibility(View.INVISIBLE);
         //количество действий
         int counter = 0;
@@ -394,10 +392,8 @@ public class SignSelection extends AppCompatActivity {
                 s.setSpan(new ForegroundColorSpan(0xFFFF0000), 0, (linewithsplash + " = " + answer).length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             }
         }, 200);
-// Get instance of Vibrator from current Context
-        Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
-// Vibrate for 400 milliseconds
+        Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         if (v != null && saveAndLoadSettings.getBoolean("vibration"))
             v.vibrate(200);
         randomnumber = 5;
